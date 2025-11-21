@@ -1,0 +1,405 @@
+local plr = game.Players.LocalPlayer
+local hum = plr.Character.Humanoid
+local uis = game:GetService("UserInputService")
+
+local function notify(title, text, duration)
+	local bindableFunction = Instance.new("BindableFunction")
+
+	game.StarterGui:SetCore("SendNotification", {
+		Title = title,
+		Text = text,
+		Duration = duration,
+		callback = bindableFunction,
+	})
+end
+
+local scr = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local antifall = Instance.new("TextButton")
+local lbl = Instance.new("TextLabel")
+local antiragdoll = Instance.new("TextButton")
+local lbl_2 = Instance.new("TextLabel")
+local tips = Instance.new("TextLabel")
+local chiilzone1 = Instance.new("TextButton")
+local chillzonee2 = Instance.new("TextButton")
+local dasht = Instance.new("TextButton")
+local lbl_3 = Instance.new("TextLabel")
+local countrys = Instance.new("TextButton")
+local lbl_4 = Instance.new("TextLabel")
+local iy = Instance.new("TextButton")
+
+scr.Name = "scr"
+scr.Parent = game:GetService("CoreGui")
+scr.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = scr
+main.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.827545583, 0, 0.160549328, 0)
+main.Size = UDim2.new(0, 167, 0, 399)
+
+title.Name = "title"
+title.Parent = main
+title.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+title.BorderSizePixel = 0
+title.Size = UDim2.new(0, 167, 0, 18)
+title.Font = Enum.Font.SourceSans
+title.Text = "t.me/baicovsky_mafia69"
+title.TextColor3 = Color3.fromRGB(200, 200, 200)
+title.TextSize = 13.000
+
+antifall.Name = "antifall"
+antifall.Parent = main
+antifall.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+antifall.BorderColor3 = Color3.fromRGB(0, 0, 0)
+antifall.BorderSizePixel = 0
+antifall.Position = UDim2.new(0.0538922139, 0, 0.0743292347, 0)
+antifall.Size = UDim2.new(0, 20, 0, 20)
+antifall.Font = Enum.Font.SourceSans
+antifall.Text = ""
+antifall.TextColor3 = Color3.fromRGB(0, 0, 0)
+antifall.TextSize = 14.000
+
+lbl.Name = "lbl"
+lbl.Parent = antifall
+lbl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lbl.BackgroundTransparency = 1.000
+lbl.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lbl.BorderSizePixel = 0
+lbl.Position = UDim2.new(1.45000005, 0, 0, 0)
+lbl.Size = UDim2.new(0, 119, 0, 20)
+lbl.Font = Enum.Font.SourceSans
+lbl.Text = "AntiFall"
+lbl.TextColor3 = Color3.fromRGB(234, 234, 234)
+lbl.TextSize = 14.000
+lbl.TextXAlignment = Enum.TextXAlignment.Left
+
+antiragdoll.Name = "antiragdoll"
+antiragdoll.Parent = main
+antiragdoll.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+antiragdoll.BorderColor3 = Color3.fromRGB(0, 0, 0)
+antiragdoll.BorderSizePixel = 0
+antiragdoll.Position = UDim2.new(0.054, 0,0.142, 0)
+antiragdoll.Size = UDim2.new(0, 20, 0, 20)
+antiragdoll.Font = Enum.Font.SourceSans
+antiragdoll.Text = ""
+antiragdoll.TextColor3 = Color3.fromRGB(0, 0, 0)
+antiragdoll.TextSize = 14.000
+
+lbl_2.Name = "lbl"
+lbl_2.Parent = antiragdoll
+lbl_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lbl_2.BackgroundTransparency = 1.000
+lbl_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lbl_2.BorderSizePixel = 0
+lbl_2.Position = UDim2.new(1.45000005, 0, 0, 0)
+lbl_2.Size = UDim2.new(0, 119, 0, 20)
+lbl_2.Font = Enum.Font.SourceSans
+lbl_2.Text = "AntiRagdoll"
+lbl_2.TextColor3 = Color3.fromRGB(234, 234, 234)
+lbl_2.TextSize = 14.000
+lbl_2.TextXAlignment = Enum.TextXAlignment.Left
+
+tips.Name = "tips"
+tips.Parent = main
+tips.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+tips.BackgroundTransparency = 1.000
+tips.BorderColor3 = Color3.fromRGB(0, 0, 0)
+tips.BorderSizePixel = 0
+tips.Position = UDim2.new(0.0538922139, 0, 0.730651081, 0)
+tips.Size = UDim2.new(0, 148, 0, 100)
+tips.Font = Enum.Font.SourceSans
+tips.Text = "tips:\nQ - dash forward\nR - dash backward\n~ - tp to chillzone 1 (up)\nright shift - antifall\nF1 - tp to timer n toggle timer plat size"
+tips.TextColor3 = Color3.fromRGB(65, 65, 65)
+tips.TextSize = 14.000
+tips.TextWrapped = true
+tips.TextXAlignment = Enum.TextXAlignment.Left
+tips.TextYAlignment = Enum.TextYAlignment.Top
+
+chiilzone1.Name = "chiilzone1"
+chiilzone1.Parent = main
+chiilzone1.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+chiilzone1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+chiilzone1.BorderSizePixel = 0
+chiilzone1.Position = UDim2.new(0.0538922139, 0, 0.523703516, 0)
+chiilzone1.Size = UDim2.new(0, 148, 0, 20)
+chiilzone1.Font = Enum.Font.SourceSans
+chiilzone1.Text = "Teleport to Chillzone I"
+chiilzone1.TextColor3 = Color3.fromRGB(234, 234, 234)
+chiilzone1.TextSize = 14.000
+
+chillzonee2.Name = "chillzonee2"
+chillzonee2.Parent = main
+chillzonee2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+chillzonee2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+chillzonee2.BorderSizePixel = 0
+chillzonee2.Position = UDim2.new(0.0538922139, 0, 0.591329217, 0)
+chillzonee2.Size = UDim2.new(0, 148, 0, 20)
+chillzonee2.Font = Enum.Font.SourceSans
+chillzonee2.Text = "Teleport to Chillzone II"
+chillzonee2.TextColor3 = Color3.fromRGB(234, 234, 234)
+chillzonee2.TextSize = 14.000
+
+dasht.Name = "dasht"
+dasht.Parent = main
+dasht.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
+dasht.BorderColor3 = Color3.fromRGB(0, 0, 0)
+dasht.BorderSizePixel = 0
+dasht.Position = UDim2.new(0.054, 0,0.21, 0)
+dasht.Size = UDim2.new(0, 20, 0, 20)
+dasht.Font = Enum.Font.SourceSans
+dasht.Text = ""
+dasht.TextColor3 = Color3.fromRGB(0, 0, 0)
+dasht.TextSize = 14.000
+
+lbl_3.Name = "lbl"
+lbl_3.Parent = dasht
+lbl_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lbl_3.BackgroundTransparency = 1.000
+lbl_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lbl_3.BorderSizePixel = 0
+lbl_3.Position = UDim2.new(1.45000005, 0, 0, 0)
+lbl_3.Size = UDim2.new(0, 119, 0, 20)
+lbl_3.Font = Enum.Font.SourceSans
+lbl_3.Text = "Dash"
+lbl_3.TextColor3 = Color3.fromRGB(234, 234, 234)
+lbl_3.TextSize = 14.000
+lbl_3.TextXAlignment = Enum.TextXAlignment.Left
+
+countrys.Name = "countrys"
+countrys.Parent = main
+countrys.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+countrys.BorderColor3 = Color3.fromRGB(0, 0, 0)
+countrys.BorderSizePixel = 0
+countrys.Position = UDim2.new(0.054, 0,0.28, 0)
+countrys.Size = UDim2.new(0, 20, 0, 20)
+countrys.Font = Enum.Font.SourceSans
+countrys.Text = ""
+countrys.TextColor3 = Color3.fromRGB(0, 0, 0)
+countrys.TextSize = 14.000
+
+lbl_4.Name = "lbl"
+lbl_4.Parent = countrys
+lbl_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lbl_4.BackgroundTransparency = 1.000
+lbl_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lbl_4.BorderSizePixel = 0
+lbl_4.Position = UDim2.new(1.45000005, 0, 0, 0)
+lbl_4.Size = UDim2.new(0, 119, 0, 20)
+lbl_4.Font = Enum.Font.SourceSans
+lbl_4.Text = "Real Dash"
+lbl_4.TextColor3 = Color3.fromRGB(234, 234, 234)
+lbl_4.TextSize = 14.000
+lbl_4.TextXAlignment = Enum.TextXAlignment.Left
+
+iy.Name = "iy"
+iy.Parent = main
+iy.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+iy.BorderColor3 = Color3.fromRGB(0, 0, 0)
+iy.BorderSizePixel = 0
+iy.Position = UDim2.new(0.0538922139, 0, 0.65899843, 0)
+iy.Size = UDim2.new(0, 148, 0, 20)
+iy.Font = Enum.Font.SourceSans
+iy.Text = "Infinity Yield"
+iy.TextColor3 = Color3.fromRGB(234, 234, 234)
+iy.TextSize = 14.000
+
+local UserInputService = game:GetService("UserInputService")
+local SmoothDragSpeed = 0.55
+
+local SmoothDragToggle
+local SmoothDragInput
+local SmoothDragStart
+
+function SmoothDrag(Frame)
+    local function UpdateSmoothDragInput(Input)
+        local Delta = Input.Position - SmoothDragStart
+        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+        game:GetService("TweenService"):Create(Frame, TweenInfo.new(SmoothDragSpeed), {Position = Position}):Play()
+    end
+
+    Frame.InputBegan:Connect(function(Input)
+        if (Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch) and UserInputService:GetFocusedTextBox() == nil then
+            SmoothDragToggle = true
+            SmoothDragStart = Input.Position
+            startPos = Frame.Position
+            Input.Changed:Connect(function()
+                if Input.UserInputState == Enum.UserInputState.End then
+                    SmoothDragToggle = false
+                end
+            end)
+        end
+    end)
+
+    Frame.InputChanged:Connect(function(Input)
+        if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
+            SmoothDragInput = Input
+        end
+    end)
+
+    game:GetService("UserInputService").InputChanged:Connect(function(Input)
+        if Input == SmoothDragInput and SmoothDragToggle then
+            UpdateSmoothDragInput(Input)
+        end
+    end)
+end
+
+SmoothDrag(main)
+
+p = Instance.new("Part", workspace)
+p.Name = "chlen"
+p.Anchored = true
+p.Position = Vector3.new(20.598217010498047, 210.19073486328125, 77.20390319824219)
+p.Size = Vector3.new(540, 2, 600)
+p.Transparency = 1
+p.CanCollide = false
+p.CanTouch = false
+
+e = true
+ae = false
+rag = false
+dashh = true
+dashfr = false
+
+function antifall_f()
+	if e == true then
+		p.CanCollide = true
+		p.CanTouch = true
+		e = false
+		notify(":D https://t.me/baicovsky_mafia69", "antifall enabled", 5)
+		antifall.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
+	else
+		p.CanCollide = false
+		p.CanTouch = false
+		e = true
+		notify("!!! https://t.me/baicovsky_mafia69", "antifall disabled", 5)
+		antifall.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	end
+end
+
+function dash()
+    pcall(function()
+		if dashh == true then
+        	plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -10)
+		end
+    end)
+end
+
+function updash()
+    pcall(function()
+        plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(0, 10, 0)
+    end)
+end
+
+function undash()
+    pcall(function()
+		if dashh == true then
+        	plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+		end
+    end)
+end
+
+local rgdl = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("Ragdoll")
+local plr = game.Players.LocalPlayer
+
+function antirag()
+	while task.wait(0.0005) do
+		if plr.Character:FindFirstChild("Knocked") and rag == true then
+			knock = plr.Character:FindFirstChild("Knocked")
+			nocombat = plr.Character:FindFirstChild("NoCombat")
+			rgdl:FireServer(false)
+			nocombat:Destroy()
+			knock:Destroy()
+		end
+	end
+end
+
+function chillzona()
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(11.384864807128906, 370.0810241699219, -33.262428283691406)
+end
+
+function chillzona2()
+	if ae == false then
+		workspace.Map.Timer:GetChildren()[3].Size = Vector3.new(20, 1.0415092706680298, 100)
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(159.6253204345703, 227.04151916503906, -51.46882247924805)
+		ae = true
+	else
+		workspace.Map.Timer:GetChildren()[3].Size = Vector3.new(4.166037559509277, 1.0415092706680298, 46.607540130615234)
+		ae = false
+	end
+end
+
+local function us(input)
+	if input.KeyCode == Enum.KeyCode.Q and dashh == true then
+		dash()
+	elseif input.KeyCode == Enum.KeyCode.R and dashh == true then
+		undash()
+	elseif input.KeyCode == Enum.KeyCode.Backquote then
+		chillzona()
+	elseif input.KeyCode == Enum.KeyCode.F1 then
+		chillzona2()
+	elseif input.KeyCode == Enum.KeyCode.RightShift then
+		antifall_f()
+	end
+end
+
+antiragdoll.MouseButton1Click:Connect(function()
+	if rag == false then
+		rag = true
+		antiragdoll.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
+	else
+		rag = false
+		antiragdoll.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	end
+end)
+
+dasht.MouseButton1Click:Connect(function()
+	if dashh == true then
+		dashh = false
+		dasht.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	else
+		dashh = true
+		dasht.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
+	end
+end)
+
+antifall.MouseButton1Click:Connect(function()
+	if e == true then
+		antifall_f()
+	else
+		antifall_f()
+	end
+end)
+
+countrys.MouseButton1Click:Connect(function()
+	if dashfr == false then
+		game:GetService("Players").LocalPlayer.Upgrades["Speed"].Value = 5
+		dasht.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+		countrys.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
+		dashh = false
+		dashfr = true
+	else
+		dashfr = false
+		countrys.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+		game:GetService("Players").LocalPlayer.Upgrades["Speed"].Value = 0
+	end
+end)
+
+chiilzone1.MouseButton1Click:Connect(function()
+	chillzona()
+end)
+
+chillzonee2.MouseButton1Click:Connect(function()
+	chillzona2()
+end)
+
+iy.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+uis.InputBegan:Connect(us)
+spawn(antirag())
