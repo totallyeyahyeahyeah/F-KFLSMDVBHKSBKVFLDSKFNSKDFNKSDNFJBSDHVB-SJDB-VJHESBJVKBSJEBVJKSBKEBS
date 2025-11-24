@@ -463,8 +463,11 @@ end
 chattran.MouseButton1Click:Connect(function()
 	if tr == false then
 		tr = true
+		chattran.BackgroundColor3 = Color3.fromRGB(172, 0, 0)
 	else
 		tr = false
+		chattran.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	end
 end)
 
 iy.MouseButton1Click:Connect(function()
