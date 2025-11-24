@@ -208,6 +208,35 @@ iy.Text = "Infinity Yield"
 iy.TextColor3 = Color3.fromRGB(234, 234, 234)
 iy.TextSize = 14.000
 
+local chattran = Instance.new("TextButton")
+local lbl10 = Instance.new("TextLabel")
+
+chattran.Name = "chattran"
+chattran.Parent = main
+chattran.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+chattran.BorderColor3 = Color3.fromRGB(0, 0, 0)
+chattran.BorderSizePixel = 0
+chattran.Position = UDim2.new(0.0538922139, 0, 0.352598965, 0)
+chattran.Size = UDim2.new(0, 20, 0, 20)
+chattran.Font = Enum.Font.SourceSans
+chattran.Text = ""
+chattran.TextColor3 = Color3.fromRGB(0, 0, 0)
+chattran.TextSize = 14.000
+
+lbl10.Name = "lbl"
+lbl10.Parent = chattran
+lbl10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lbl10.BackgroundTransparency = 1.000
+lbl10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lbl10.BorderSizePixel = 0
+lbl10.Position = UDim2.new(1.45000005, 0, 0, 0)
+lbl10.Size = UDim2.new(0, 119, 0, 20)
+lbl10.Font = Enum.Font.SourceSans
+lbl10.Text = "Chat Translator"
+lbl10.TextColor3 = Color3.fromRGB(234, 234, 234)
+lbl10.TextSize = 14.000
+lbl10.TextXAlignment = Enum.TextXAlignment.Left
+
 local UserInputService = game:GetService("UserInputService")
 local SmoothDragSpeed = 0.55
 
@@ -397,9 +426,57 @@ chillzonee2.MouseButton1Click:Connect(function()
 	chillzona2()
 end)
 
+local TextChannels = game:GetService("TextChatService"):WaitForChild("TextChannels")
+tr = false
+
+conf = {
+    lang = "ru" -- change it to your lang
+}
+
+local function send(plr, msg) -- send chat msg
+    TextChannels.RBXSystem:DisplaySystemMessage("[".. plr .. "]: ".. msg)
+end
+
+local function translate(text) -- google translate api
+    if text:sub(1, 1) == "#" then -- just dont translate censored msgs
+        return text
+    end
+  local url = "https://translate.googleapis.com/translate_a/single?" ..
+        "client=gtx&" ..
+        "sl=auto&" ..
+        "tl=" .. conf.lang .. "&" ..
+        "ie=UTF-8&" .. 
+        "oe=UTF-8&" ..  
+        "dt=t&" ..      
+        "dt=at&" ..    
+        "dt=bd&" ..     
+        "dt=rm&" ..     
+        "dt=ss&" ..     
+        "dt=ex&" ..     
+            "q=" .. text
+    local response = game:HttpGet(url)
+    
+    local translated = string.match(response, '%[%[%["(.-)"')
+    return translated
+end
+
+chattran.MouseButton1Click:Connect(function()
+	if tr == false then
+		tr = true
+	else
+		tr = false
+end)
+
 iy.MouseButton1Click:Connect(function()
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
 uis.InputBegan:Connect(us)
+game:GetService("TextChatService").MessageReceived:Connect(function(m)
+    if m.TextSource and tr == true then
+        local p = game:GetService("Players"):GetPlayerByUserId(m.TextSource.UserId)
+        if p then print(p.Name .. ": " .. m.Text) end
+        send(p.Name, translate(m.Text))
+    end
+end)
 spawn(antirag())
