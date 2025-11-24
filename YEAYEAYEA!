@@ -307,8 +307,8 @@ local rgdl = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("Ragdoll
 local plr = game.Players.LocalPlayer
 
 function antirag()
-	while task.wait(0.0005) do
-		if plr.Character:FindFirstChild("Knocked") and rag == true then
+	while task.wait(0.000005) do
+		if plr.Character:FindFirstChild("Knocked") and rag == true and plr.Character.Humanoid.Health > 0 then
 			knock = plr.Character:FindFirstChild("Knocked")
 			nocombat = plr.Character:FindFirstChild("NoCombat")
 			rgdl:FireServer(false)
